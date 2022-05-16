@@ -4,6 +4,9 @@ src/config/certs
 src/config/environment/*
 !src/config/environment/README.md
 
+# Neo4J database
+database
+
 # compiled output
 /dist
 /node_modules

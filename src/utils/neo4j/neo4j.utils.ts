@@ -10,7 +10,7 @@ const NEO4J_CONNECT_TIMEOUT = 1000;
  * @returns Driver
  */
 export const createDriver = async (config: Neo4jConfig): Promise<Driver> => {
-    console.log(blue('[NEO4J] Open neo4J database connection throw the driver...'))
+    console.log(blue('[NEO4J] Open neo4J database connection through the driver...'))
     const driver = neo4j.driver(
         `${config.scheme}://${config.host}:${config.port}`,
         neo4j.auth.basic(config.username, config.password)
@@ -34,7 +34,7 @@ const pingToDatabase = async (driver: Driver): Promise<boolean> => {
             try {
                 const res = await driver.verifyConnectivity();
                 if (typeof res.address === 'string' && typeof res.version === 'string' ) {
-                    console.log(blue('[NEO4J] The database connection open successfully, ready bootstrap the backend server...'))
+                    console.log(blue('[NEO4J] The database connection open successfully, ready to bootstrap the backend server...'))
                     resolve(true);
                 }
             } catch (e) {
