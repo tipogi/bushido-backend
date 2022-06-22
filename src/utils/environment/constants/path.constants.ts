@@ -1,4 +1,7 @@
 // Environment file configuration properties path
+// => environment
+export const ENV = 'env'
+// => Database
 export const DDBB_SCHEME = 'ddbb.scheme';
 export const DDBB_HOST = 'ddbb.host';
 export const DDBB_PORT = 'ddbb.port';

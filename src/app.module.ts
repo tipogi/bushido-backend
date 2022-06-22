@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
-import { CardsModule } from './modules/cards/cards.module';
+import { GraphqlWrapperModule } from './utils/graphql/graphql-wrapper.module';
+import { AppModules } from './modules';
 
 @Module({
-  imports: [CardsModule],
+  imports: [
+    GraphqlWrapperModule,
+    ...AppModules
+  ],
   controllers: [],
   providers: [],
 })

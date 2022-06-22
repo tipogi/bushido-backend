@@ -1,8 +1,8 @@
 {
-  "name": "server",
+  "name": "bushido-server",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Bushido backend where we get all the information",
+  "author": "tipogi",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -21,10 +21,16 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/apollo": "^10.0.16",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^2.0.0",
     "@nestjs/core": "^8.0.0",
+    "@nestjs/graphql": "^10.0.16",
     "@nestjs/platform-express": "^8.0.0",
+    "apollo-server-core": "^3.9.0",
+    "apollo-server-express": "^3.9.0",
+    "class-validator": "^0.13.2",
+    "graphql": "^16.5.0",
     "neo4j-driver": "^4.4.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
