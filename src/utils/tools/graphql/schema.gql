@@ -10,5 +10,9 @@ type TopicObject {
 }
 
 type Query {
-  showTopics: [TopicObject!]!
+  showTopics(data: ShowTopicsInput!): [TopicObject!]!
+}
+
+input ShowTopicsInput {
+  path: [String!]!
 }
