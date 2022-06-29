@@ -1,8 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class CardObject {
-
+export class TopicObject {
   @Field({ nullable: true })
   name: string;
 
@@ -10,8 +9,8 @@ export class CardObject {
   description: string;
 
   @Field({ nullable: true })
-  url: string;
+  icon: string;
 
-  @Field({ nullable: true })
-  icon?: string;
+  @Field({ nullable: false })
+  hash: string;
 }

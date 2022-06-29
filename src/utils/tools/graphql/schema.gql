@@ -2,13 +2,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CardObject {
+type TopicObject {
   name: String
   description: String
-  url: String
   icon: String
+  hash: String!
 }
 
 type Query {
-  showCard: [CardObject!]!
+  showTopics: [TopicObject!]!
 }

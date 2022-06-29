@@ -1,41 +1,14 @@
 import { Module } from '@nestjs/common';
-import {
-  CONFIG_FILE_PATH,
-  DDBB_HOST,
-  DDBB_NAME,
-  DDBB_PASSWORD,
-  DDBB_PORT,
-  DDBB_SCHEME,
-  DDBB_USERNAME,
-} from 'src/utils/environment/constants';
-import { EnvConfigModule } from 'src/utils/environment/env.config.module';
-import { EnvConfigService } from 'src/utils/environment/env.config.service';
-import { Neo4jConfig, Neo4jModule } from 'src/utils/neo4j';
-import { CardQueryResolver } from './infrastructure/adapters/primaries/graphql/queries';
-import { TempService } from './infrastructure/adapters/primaries/graphql/queries/temp.service';
+import { CqrsModule } from '@nestjs/cqrs';
+import { DatabaseModule } from 'src/utils/modules/ddbb/database.module';
+import { ShowTopicsHandler } from './application/query/show-topics.handler';
+import { TopicQueryResolver } from './infrastructure/adapters/in/graphql/queries/topic-query.resolver';
+
+export const EventHandlers = [ShowTopicsHandler];
 
 @Module({
-  imports: [
-    Neo4jModule.forRootAsync({
-      imports: [
-        EnvConfigModule.register({
-          folder: CONFIG_FILE_PATH,
-        }),
-      ],
-      inject: [EnvConfigService],
-      useFactory: (configService: EnvConfigService): Neo4jConfig => {
-        return {
-          scheme: configService.get(DDBB_SCHEME),
-          host: configService.get(DDBB_HOST),
-          port: configService.get(DDBB_PORT),
-          username: configService.get(DDBB_USERNAME),
-          password: configService.get(DDBB_PASSWORD),
-          database: configService.get(DDBB_NAME),
-        };
-      },
-    }),
-  ],
+  imports: [DatabaseModule, CqrsModule],
   controllers: [],
-  providers: [CardQueryResolver, TempService],
+  providers: [TopicQueryResolver, ...EventHandlers],
 })
 export class CardsModule {}
