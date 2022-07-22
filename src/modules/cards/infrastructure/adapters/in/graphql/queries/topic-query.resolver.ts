@@ -4,11 +4,11 @@ import { ShowTopicsQuery } from 'src/modules/cards/application/query/show-topics
 import { ShowTopicsInput } from '../input';
 import { TopicObject } from '../models';
 
-@Resolver((of) => TopicObject)
+@Resolver(() => TopicObject)
 export class TopicQueryResolver {
   constructor(private readonly queryBus: QueryBus) {}
 
-  @Query((returns) => [TopicObject])
+  @Query(() => [TopicObject])
   async showTopics(
     @Args('data')
     showTopicInput: ShowTopicsInput,

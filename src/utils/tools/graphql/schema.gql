@@ -9,8 +9,31 @@ type TopicObject {
   hash: String!
 }
 
+type Offer {
+  exchange: String!
+  price: String!
+  dif: String!
+  min_btc: String!
+  max_btc: String!
+  min_amount: String!
+  max_amount: String!
+  method: String!
+}
+
+type MarketObject {
+  offers: [Offer!]!
+  price: String!
+}
+
 type Query {
+  showMarketOffers(data: ShowMarketOffersInput!): MarketObject!
   showTopics(data: ShowTopicsInput!): [TopicObject!]!
+}
+
+input ShowMarketOffersInput {
+  fiat: String!
+  direction: String!
+  premium: Float!
 }
 
 input ShowTopicsInput {
