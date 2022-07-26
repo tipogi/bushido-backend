@@ -7,12 +7,14 @@ type TopicObject {
   description: String
   icon: String
   hash: String!
+  labels: [String!]!
 }
 
 type Offer {
   exchange: String!
   price: String!
   dif: String!
+  maker_status: String!
   min_btc: String!
   max_btc: String!
   min_amount: String!

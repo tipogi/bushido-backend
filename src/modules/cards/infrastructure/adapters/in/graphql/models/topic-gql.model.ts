@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { IsArray } from 'class-validator';
 
 @ObjectType()
 export class TopicObject {
@@ -13,4 +14,8 @@ export class TopicObject {
 
   @Field({ nullable: false })
   hash: string;
+
+  @Field(() => [String])
+  @IsArray()
+  labels: string[];
 }

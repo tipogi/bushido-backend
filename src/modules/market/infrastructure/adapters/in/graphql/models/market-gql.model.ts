@@ -12,6 +12,9 @@ class Offer {
   dif: string;
 
   @Field()
+  maker_status: string;
+
+  @Field()
   min_btc: string;
 
   @Field()

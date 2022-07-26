@@ -10,10 +10,10 @@ export class ShowMarketOffersHandler implements IQueryHandler<ShowMarketOffersQu
   constructor(@Inject(MarketInjectionToken.BUSHIDO_PROXY_SERVICE) readonly bushidoProxyService: BushidoProxyService) {}
 
   async execute(query: ShowMarketOffersQuery): Promise<MarketObject> {
-    const { offers } = await this.bushidoProxyService.requestOffers(query.params);
+    const { offers, price } = await this.bushidoProxyService.requestOffers(query.params);
     return {
       offers,
-      price: '23158',
+      price,
     };
   }
 }
