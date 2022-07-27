@@ -6,5 +6,5 @@ export class Topic {
 }
 
 export interface TopicRepository {
-  findTopicByPath: (path: string[]) => Promise<Topic[] | undefined>;
+  findTopicByPath: (path: string[]) => Promise<Topic[]>;
 }

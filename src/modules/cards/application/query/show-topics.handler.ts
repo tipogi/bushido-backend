@@ -1,7 +1,7 @@
 import { Inject, NotFoundException } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ErrorMessage } from '../../domain/error';
-import { Topic, TopicRepository } from '../../infrastructure/ports/respositories/topic.repository';
+import { Topic, TopicRepository } from '../../infrastructure/ports/respositories';
 import { CardInjectionToken } from '../card-injection.token';
 import { ShowTopicsQuery } from './show-topics.query';
 

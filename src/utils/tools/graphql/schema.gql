@@ -10,6 +10,17 @@ type TopicObject {
   labels: [String!]!
 }
 
+type DomainObject {
+  name: String
+  description: String
+  icon: String
+  hash: String!
+  tag: [String!]!
+  lang: String
+  url: String!
+  labels: [String!]!
+}
+
 type Offer {
   exchange: String!
   price: String!
@@ -30,6 +41,7 @@ type MarketObject {
 type Query {
   showMarketOffers(data: ShowMarketOffersInput!): MarketObject!
   showTopics(data: ShowTopicsInput!): [TopicObject!]!
+  showDomains(data: ShowDomainsInput!): [DomainObject!]!
 }
 
 input ShowMarketOffersInput {
@@ -39,5 +51,9 @@ input ShowMarketOffersInput {
 }
 
 input ShowTopicsInput {
+  path: [String!]!
+}
+
+input ShowDomainsInput {
   path: [String!]!
 }
