@@ -1,6 +1,6 @@
 import { QueryBus } from '@nestjs/cqrs';
 import { Resolver, Query, Args } from '@nestjs/graphql';
-import { ShowTopicsQuery } from 'src/modules/cards/application/query/show-topics.query';
+import { ShowTopicsQuery } from 'src/modules/cards/application/query';
 import { ShowTopicsInput } from '../input';
 import { TopicObject } from '../models';
 

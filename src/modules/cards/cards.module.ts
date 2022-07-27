@@ -2,8 +2,7 @@ import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { DatabaseModule } from 'src/utils/modules/ddbb/database.module';
 import { CardInjectionToken } from './application/card-injection.token';
-import { ShowDomainsHandler } from './application/query/show-domains.handler';
-import { ShowTopicsHandler } from './application/query/show-topics.handler';
+import { ShowDomainsHandler, ShowTopicsHandler } from './application/query';
 import { DomainQueryResolver, TopicQueryResolver } from './infrastructure/adapters/in/graphql/queries';
 import { DomainRepositoryImplement, TopicRepositoryImplement } from './infrastructure/adapters/out/repositories';
 
@@ -17,9 +16,10 @@ const infrastructure: Provider[] = [
     useClass: DomainRepositoryImplement,
   },
 ];
-const EventHandlers = [ShowTopicsHandler, ShowDomainsHandler];
 
 const resolvers = [TopicQueryResolver, DomainQueryResolver];
+
+const EventHandlers = [ShowTopicsHandler, ShowDomainsHandler];
 
 @Module({
   imports: [DatabaseModule, CqrsModule],

@@ -1,6 +1,6 @@
 import { QueryBus } from '@nestjs/cqrs';
 import { Resolver, Query, Args } from '@nestjs/graphql';
-import { ShowDomainsQuery } from 'src/modules/cards/application/query/show-domains.query';
+import { ShowDomainsQuery } from 'src/modules/cards/application/query';
 import { ShowDomainsInput } from '../input';
 import { DomainObject } from '../models';
 

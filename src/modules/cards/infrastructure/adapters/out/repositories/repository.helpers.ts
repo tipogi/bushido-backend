@@ -12,6 +12,11 @@ export const createQueryPath = (arrayPath: string[]) => {
   return path;
 };
 
+/**
+ * Create Cypher Query relationship string
+ * @param array: Array of nodes
+ * @returns string
+ */
 const extractPath = (array: string[]) => {
   let restPath = '';
   forEach(array, (nodeNameAttribute: string, index: number) => {
