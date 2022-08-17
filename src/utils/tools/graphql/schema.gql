@@ -7,7 +7,7 @@ type TopicObject {
   description: String
   icon: String
   hash: String!
-  labels: [String!]!
+  type: String!
 }
 
 type DomainObject {
@@ -21,6 +21,11 @@ type DomainObject {
   labels: [String!]!
 }
 
+type PaymentMethods {
+  icon: [String!]!
+  others: [String!]!
+}
+
 type Offer {
   exchange: String!
   price: String!
@@ -30,7 +35,7 @@ type Offer {
   max_btc: String!
   min_amount: String!
   max_amount: String!
-  method: String!
+  method: PaymentMethods!
 }
 
 type MarketObject {

@@ -10,7 +10,10 @@ export class ShowTopicsHandler implements IQueryHandler<ShowTopicsQuery> {
   constructor(@Inject(CardInjectionToken.TOPIC_REPOSITORY) readonly topicRepository: TopicRepository) {}
 
   async execute(query: ShowTopicsQuery): Promise<Topic[]> {
-    const res = await this.topicRepository.findTopicByPath(query.path);
+    const res =
+      query.path.length === 0
+        ? await this.topicRepository.findRootTopics()
+        : await this.topicRepository.findTopicByPath(query.path);
     if (!res) throw new NotFoundException(ErrorMessage.PATH_NOT_FOUND);
     return res;
   }

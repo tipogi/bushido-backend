@@ -4,12 +4,24 @@ export const getTopicsQuery = (path: string) => {
     WITH parent
     MATCH (parent)-[:HAS]->(child:Topic)
     RETURN { 
-      labels: labels(child), 
       name: child.name, 
-      icon: child.icon, 
       description: child.description, 
-      hash: child.hash 
+      icon: child.icon, 
+      hash: child.hash,
+      labels: labels(child)
     } as topic
     ORDER BY child.name
   `;
 };
+
+export const ROOT_TOPICS = `
+  MATCH (root: Topic:Root) 
+  RETURN { 
+    name: root.name, 
+    description: root.description, 
+    icon: root.icon, 
+    hash: root.hash ,
+    type: 'Root'
+  } as topic
+  ORDER BY root.name
+`;

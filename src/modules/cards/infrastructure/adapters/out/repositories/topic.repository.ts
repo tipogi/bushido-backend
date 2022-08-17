@@ -3,15 +3,21 @@ import { QueryResult } from 'neo4j-driver';
 import { Neo4jService } from 'src/utils/tools/neo4j';
 import { Topic, TopicRepository } from '../../../ports/respositories/topic.repository';
 import { createQueryPath } from './repository.helpers';
-import { getTopicsQuery } from './queries';
+import { getTopicsQuery, ROOT_TOPICS } from './queries';
 
 @Injectable()
 export class TopicRepositoryImplement implements TopicRepository {
   constructor(private readonly neo4jService: Neo4jService) {}
-  async findTopicByPath(arrayPath: string[]): Promise<Topic[] | undefined> {
+  // Get the topics of the path
+  async findTopicByPath(arrayPath: string[]): Promise<Topic[]> {
     const path = createQueryPath(arrayPath);
     const query = getTopicsQuery(path);
     const res = await this.neo4jService.read(query);
+    return convertEntityToTopicsList(res);
+  }
+
+  async findRootTopics(): Promise<Topic[]> {
+    const res = await this.neo4jService.read(ROOT_TOPICS);
     return convertEntityToTopicsList(res);
   }
 }
@@ -21,6 +27,13 @@ const convertEntityToTopicsList = (result: QueryResult): Topic[] => {
     ? []
     : result.records.map((topic) => {
         const topicObject: Topic = topic.get('topic');
+        // Extract the type from not Root nodes
+        if (topicObject.labels) {
+          const filteredType = topicObject.labels.filter((type) => type !== 'Topic');
+          const type = filteredType[0];
+          delete topicObject.labels;
+          return { ...topicObject, type };
+        }
         return { ...topicObject };
       });
 };

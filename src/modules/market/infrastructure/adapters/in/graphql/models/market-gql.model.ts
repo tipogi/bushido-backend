@@ -1,6 +1,15 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
+class PaymentMethods {
+  @Field(() => [String])
+  icon: string[];
+
+  @Field(() => [String])
+  others: string[];
+}
+
+@ObjectType()
 class Offer {
   @Field()
   exchange: string;
@@ -26,8 +35,8 @@ class Offer {
   @Field()
   max_amount: string;
 
-  @Field()
-  method: string;
+  @Field(() => PaymentMethods)
+  method: PaymentMethods;
 }
 
 @ObjectType()
