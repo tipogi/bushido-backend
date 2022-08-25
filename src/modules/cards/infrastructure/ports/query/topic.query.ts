@@ -7,7 +7,7 @@ export class Topic {
   type: string;
 }
 
-export interface TopicRepository {
+export interface TopicQuery {
   findTopicByPath: (path: string[]) => Promise<Topic[]>;
   findRootTopics: () => Promise<Topic[]>;
 }

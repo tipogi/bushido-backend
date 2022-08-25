@@ -3,7 +3,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @ObjectType()
 class PaymentMethods {
   @Field(() => [String])
-  icon: string[];
+  icons: string[];
 
   @Field(() => [String])
   others: string[];

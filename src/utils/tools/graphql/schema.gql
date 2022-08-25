@@ -15,6 +15,7 @@ type DomainObject {
   description: String
   icon: String
   hash: String!
+  visits: Float!
   tag: [String!]!
   lang: String
   url: String!
@@ -22,7 +23,7 @@ type DomainObject {
 }
 
 type PaymentMethods {
-  icon: [String!]!
+  icons: [String!]!
   others: [String!]!
 }
 
@@ -61,4 +62,14 @@ input ShowTopicsInput {
 
 input ShowDomainsInput {
   path: [String!]!
+}
+
+type Mutation {
+  updateDomainVisit(data: DomainVisitInput!): String!
+}
+
+input DomainVisitInput {
+  path: [String!]!
+  hash: String!
+  name: String!
 }

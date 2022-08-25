@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { QueryResult } from 'neo4j-driver';
 import { Neo4jService } from 'src/utils/tools/neo4j';
-import { Topic, TopicRepository } from '../../../ports/respositories/topic.repository';
-import { createQueryPath } from './repository.helpers';
-import { getTopicsQuery, ROOT_TOPICS } from './queries';
+import { Topic, TopicQuery } from '../../../ports/query';
+import { createQueryPath } from './query.helpers';
+import { getTopicsQuery, ROOT_TOPICS } from './graphQueries';
 
 @Injectable()
-export class TopicRepositoryImplement implements TopicRepository {
+export class TopicQueryImplement implements TopicQuery {
   constructor(private readonly neo4jService: Neo4jService) {}
   // Get the topics of the path
   async findTopicByPath(arrayPath: string[]): Promise<Topic[]> {

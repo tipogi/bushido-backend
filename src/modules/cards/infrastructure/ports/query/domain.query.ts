@@ -8,6 +8,6 @@ export class Domain {
   tag: string[];
 }
 
-export interface DomainRepository {
+export interface DomainQuery {
   findDomainsByPath: (path: string[]) => Promise<Domain[]>;
 }

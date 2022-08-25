@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { QueryResult } from 'neo4j-driver';
 import { Neo4jService } from 'src/utils/tools/neo4j';
-import { Domain, DomainRepository } from '../../../ports/respositories';
-import { createQueryPath } from './repository.helpers';
-import { getDomainsQuery } from './queries';
+import { Domain, DomainQuery } from '../../../ports/query';
+import { createQueryPath } from './query.helpers';
+import { getDomainsQuery } from './graphQueries';
 
 @Injectable()
-export class DomainRepositoryImplement implements DomainRepository {
+export class DomainQueryImplement implements DomainQuery {
   constructor(private readonly neo4jService: Neo4jService) {}
   async findDomainsByPath(arrayPath: string[]): Promise<Domain[] | undefined> {
     const path = createQueryPath(arrayPath);

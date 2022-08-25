@@ -1,4 +1,5 @@
 export enum CardInjectionToken {
-  TOPIC_REPOSITORY = 'TopicRepository',
+  TOPIC_QUERY = 'TopicQuery',
+  DOMAIN_QUERY = 'DomainQuery',
   DOMAIN_REPOSITORY = 'DomainRepository',
 }
