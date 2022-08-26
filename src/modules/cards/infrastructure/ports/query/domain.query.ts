@@ -2,6 +2,7 @@ export class Domain {
   name: string;
   description: string;
   hash: string;
+  visits: number | null;
   icon: string;
   lang: string;
   url: string;

@@ -13,7 +13,6 @@ export class DomainQueryResolver {
     @Args('data')
     showDomainInput: ShowDomainsInput,
   ): Promise<DomainObject[]> {
-    console.log(showDomainInput);
     const query = new ShowDomainsQuery(showDomainInput.path);
     return this.queryBus.execute(query);
   }

@@ -11,7 +11,8 @@ export const getDomainsQuery = (path: string) => {
       hash: child.hash,
       lang: child.lang,
       tag: child.tag,
-      url: child.url
+      url: child.url,
+      visits: child.visits
     } as domain
     ORDER BY child.name
   `;

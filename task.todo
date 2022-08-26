@@ -1,4 +1,4 @@
 TODOs (✔/☐)
 
 ☐ Refractor Cards domain in two different domains: Topic and domain
-☐ 
+☐ Add a BTCPayServer in the docker network

@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-const APOLLO_CLIENT = true;
+const APOLLO_CLIENT = false;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
