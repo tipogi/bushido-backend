@@ -13,7 +13,6 @@ export class MarketQueryResolver {
     @Args('data')
     marketInput: ShowMarketOffersInput,
   ): Promise<MarketObject> {
-    console.log(marketInput);
     const query = new ShowMarketOffersQuery(marketInput);
     return this.queryBus.execute(query);
   }

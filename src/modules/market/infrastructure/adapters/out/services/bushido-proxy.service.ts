@@ -11,8 +11,16 @@ export class BushidoProxyServiceImplement implements BushidoProxyService {
   constructor(private readonly httpService: HttpService) {}
 
   async requestOffers(params: ShowMarketOffersInput): Promise<MarketObject> {
-    return await firstValueFrom(
-      this.httpService.post('http://localhost:8080/market_offers', params).pipe(map((response) => response.data)),
-    );
+    try {
+      return await firstValueFrom(
+        this.httpService.post('http://localhost:8080/market_offers', params).pipe(map((response) => response.data)),
+      );
+    } catch (e) {
+      console.log(e)
+      return {
+        offers: [],
+        price: '0',
+      };
+    }
   }
 }

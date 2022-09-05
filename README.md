@@ -9,3 +9,6 @@ If we want to enter in the apollo client from the browser, we have to deactivate
 In bushido we have two models:
 - Market: The responsible to fetch the exchanges offers
 - Cards: This model can have two different types, *topic* and *domain*. Topic is the the group that wraps the domains and *domain* is the web page url
+
+### Container
+- Create a network for docker: `docker network create bushido-network`
