@@ -16,7 +16,7 @@ export class BushidoProxyServiceImplement implements BushidoProxyService {
         this.httpService.post('http://localhost:8080/market_offers', params).pipe(map((response) => response.data)),
       );
     } catch (e) {
-      console.log(e)
+      console.log(e);
       return {
         offers: [],
         price: '0',

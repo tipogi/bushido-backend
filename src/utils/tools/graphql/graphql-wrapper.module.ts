@@ -38,3 +38,11 @@ const GRAPHQL_SCHEMA_PATH = 'src/utils/tools/graphql/schema.gql';
   ],
 })
 export class GraphqlWrapperModule {}
+
+// CORS object to add in the factory
+const cors = {
+  cors: {
+    origin: 'http://machine_IP:5173',
+    credentials: true,
+  },
+};
