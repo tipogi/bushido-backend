@@ -2,7 +2,7 @@ import { Inject, InternalServerErrorException, NotFoundException } from '@nestjs
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { isEmpty } from 'lodash';
 import { Neo4jError } from 'neo4j-driver';
-import { ErrorMessage } from '../../domain/error';
+import { PATH_NOT_FOUND_ERROR } from '../../domain/error';
 import { Topic, TopicQuery } from '../../infrastructure/ports/query';
 import { CardInjectionToken } from '../card-injection.token';
 import { ShowTopicsQuery } from './show-topics.query';
@@ -18,7 +18,8 @@ export class ShowTopicsHandler implements IQueryHandler<ShowTopicsQuery> {
           ? await this.topicQuery.findRootTopics()
           : await this.topicQuery.findTopicByPath(query.path);
       if (isEmpty(res)) {
-        throw new NotFoundException(ErrorMessage.PATH_NOT_FOUND);
+        const { message, key } = PATH_NOT_FOUND_ERROR;
+        throw new NotFoundException(message, key);
       }
       return res;
     } catch (e) {

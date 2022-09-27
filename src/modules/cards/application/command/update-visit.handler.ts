@@ -1,6 +1,6 @@
 import { Inject, NotFoundException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { ErrorMessage } from '../../domain/error';
+import { DOMAIN_IS_NOT_FOUND_ERROR } from '../../domain/error';
 import { DomainRepository } from '../../domain/repository';
 import { CardInjectionToken } from '../card-injection.token';
 
@@ -16,7 +16,8 @@ export class UpdateVisitdHandler implements ICommandHandler<UpdateVisitCommand, 
   async execute({ path, hash, name }: UpdateVisitCommand): Promise<void> {
     const domain = await this.domainRepository.findByPathAndName(path, name);
     if (!domain) {
-      throw new NotFoundException(ErrorMessage.DOMAIN_IS_NOT_FOUND);
+      const { message, key } = DOMAIN_IS_NOT_FOUND_ERROR;
+      throw new NotFoundException(message, key);
     }
     domain.updateVisits(hash);
     await this.domainRepository.updateVisits(domain);

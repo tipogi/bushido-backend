@@ -5,6 +5,7 @@ import { BushidoProxyService } from '../../../ports/bushido-proxy.service';
 import { ShowMarketOffersInput } from '../../in/graphql/input';
 import { MarketObject } from '../../in/graphql/models';
 import { map } from 'rxjs/operators';
+import { AxiosError } from 'axios';
 
 @Injectable()
 export class BushidoProxyServiceImplement implements BushidoProxyService {
@@ -16,7 +17,10 @@ export class BushidoProxyServiceImplement implements BushidoProxyService {
         this.httpService.post('http://localhost:8080/market_offers', params).pipe(map((response) => response.data)),
       );
     } catch (e) {
-      console.log(e);
+      if (e instanceof AxiosError) {
+        // #ERROR_LOG
+        console.log(e.code, e.message);
+      }
       return {
         offers: [],
         price: '0',

@@ -13,7 +13,6 @@ export class TopicQueryResolver {
     @Args('data')
     showTopicInput: ShowTopicsInput,
   ): Promise<TopicObject[]> {
-    console.log(showTopicInput);
     const query = new ShowTopicsQuery(showTopicInput.path);
     return this.queryBus.execute(query);
   }

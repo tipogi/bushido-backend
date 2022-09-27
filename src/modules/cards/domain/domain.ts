@@ -1,6 +1,6 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { AggregateRoot } from '@nestjs/cqrs';
-import { ErrorMessage } from './error';
+import { DOMAIN_WRONG_HASH_ERROR } from './error';
 import { VisitUpdatedEvent } from './events/visit-updated.event';
 
 export interface DomainProperties {
@@ -39,7 +39,8 @@ export class DomainImpl extends AggregateRoot implements Domain {
 
   updateVisits(hash: string): void {
     if (this.hash !== hash) {
-      throw new InternalServerErrorException(ErrorMessage.WRONG_HASH);
+      const { message, key } = DOMAIN_WRONG_HASH_ERROR;
+      throw new InternalServerErrorException(message, key);
     }
     // Increment domain visit number
     this.visits++;

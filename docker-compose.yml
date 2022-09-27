@@ -2,7 +2,7 @@ version: "3.9"
 services:
   bushido-db:
     container_name: ${NEO4J_HOST}
-    image: neo4j:4.4.6
+    image: neo4j:4.4.9
     ports:
       # Neo4J Browser 
       - "7474:7474"
