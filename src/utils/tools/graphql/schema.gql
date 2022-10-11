@@ -37,6 +37,7 @@ type Offer {
   min_amount: String!
   max_amount: String!
   method: PaymentMethods!
+  extra: String!
 }
 
 type MarketObject {

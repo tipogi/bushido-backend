@@ -37,6 +37,10 @@ class Offer {
 
   @Field(() => PaymentMethods)
   method: PaymentMethods;
+
+  // Should be optional, not mandatory property. TODO, graphQL contract
+  @Field()
+  extra: string;
 }
 
 @ObjectType()
