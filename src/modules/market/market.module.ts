@@ -1,23 +1,23 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { MarketInjectionToken } from './application/market-injection.token';
+import { ProxyInjectionToken } from '../proxy/application/proxy-injection.token';
+import { ProxyModule } from '../proxy/proxy.module';
 import { ShowMarketOffersHandler } from './application/query/show-market-offers.handler';
 import { MarketQueryResolver } from './infrastructure/adapters/in/graphql/queries';
-import { BushidoProxyServiceImplement } from './infrastructure/adapters/out/services/bushido-proxy.service';
 
-const infrastructure: Provider[] = [
+/*const infrastructure: Provider[] = [
   {
-    provide: MarketInjectionToken.BUSHIDO_PROXY_SERVICE,
+    provide: ProxyInjectionToken.BUSHIDO_PROXY_SERVICE,
     useClass: BushidoProxyServiceImplement,
   },
-];
+];*/
 
 const EventHandlers = [ShowMarketOffersHandler];
 
 @Module({
-  imports: [CqrsModule, HttpModule],
+  imports: [CqrsModule, HttpModule, ProxyModule],
   controllers: [],
-  providers: [MarketQueryResolver, ...infrastructure, ...EventHandlers],
+  providers: [MarketQueryResolver, ...EventHandlers],
 })
 export class MarketModule {}
