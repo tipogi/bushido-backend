@@ -12,18 +12,11 @@ export class EnvConfigService {
   // The attributes that stores our configuration properties
   private readonly envConfig: EnvironmentConfigParams;
   // Inject the arguments received from the module
-  constructor(
-    @Inject(CONFIG_PROVIDER_VALUE_NAME) private options: CustomConfigOptions,
-  ) {
+  constructor(@Inject(CONFIG_PROVIDER_VALUE_NAME) private options: CustomConfigOptions) {
     try {
       const environment = process.env.APP_ENV || 'development';
       console.log(`Application running in ${environment} environment`);
-      const envFile = path.resolve(
-        __dirname,
-        '../../',
-        this.options.folder,
-        `${environment}.yml`,
-      );
+      const envFile = path.resolve(__dirname, '../../', this.options.folder, `${environment}.yml`);
       this.envConfig = yaml.load(readFileSync(envFile), 'utf8');
     } catch (e) {
       console.log(
