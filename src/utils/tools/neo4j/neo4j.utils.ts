@@ -28,7 +28,7 @@ export const createDriver = async (config: Neo4jConfig): Promise<Driver> => {
  * @param driver
  * @returns: If connection is successful or not
  */
-const pingToDatabase = async (driver: Driver): Promise<boolean> => {
+export const pingToDatabase = async (driver: Driver): Promise<boolean> => {
   return new Promise((resolve) => {
     setTimeout(async () => {
       try {
