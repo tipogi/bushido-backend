@@ -16,6 +16,7 @@ export const getTopicsQuery = (path: string) => {
 
 export const ROOT_TOPICS = `
   MATCH (root: Topic:Root) 
+  WHERE root.access = "public"
   RETURN { 
     name: root.name, 
     description: root.description, 

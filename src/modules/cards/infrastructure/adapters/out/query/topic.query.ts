@@ -18,6 +18,7 @@ export class TopicQueryImplement implements TopicQuery {
 
   async findRootTopics(): Promise<Topic[]> {
     const res = await this.neo4jService.read(ROOT_TOPICS);
+    console.log(res);
     return convertEntityToTopicsList(res);
   }
 }
