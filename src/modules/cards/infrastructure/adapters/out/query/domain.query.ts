@@ -22,7 +22,7 @@ const convertEntityToDomainsList = (result: QueryResult): Domain[] => {
     : result.records.map((topic) => {
         const domainObject: Domain = topic.get('domain');
         // With graphQL, we cannot return null so we need to adapt
-        const visits = domainObject.visits ? domainObject.visits : 0;
-        return { ...domainObject, visits };
+        const views = domainObject.views ? domainObject.views : 0;
+        return { ...domainObject, views };
       });
 };

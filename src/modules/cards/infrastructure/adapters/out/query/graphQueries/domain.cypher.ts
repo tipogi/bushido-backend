@@ -12,7 +12,7 @@ export const getDomainsQuery = (path: string) => {
       lang: child.lang,
       tag: child.tag,
       url: child.url,
-      visits: child.visits
+      views: child.views
     } as domain
     ORDER BY child.name
   `;

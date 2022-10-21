@@ -4,7 +4,7 @@ import { Domain, DomainProperties } from 'src/modules/cards/domain/domain';
 import DomainFactory from 'src/modules/cards/domain/factory';
 import { DomainNode, DomainRepository } from 'src/modules/cards/domain/repository';
 import { Neo4jService } from 'src/utils/tools/neo4j';
-import { getDomain, UPDATE_VISITS } from './graph.queries';
+import { getDomain, UPDATE_VIEWS } from './graph.queries';
 import { createMatchClause } from './repository.helper';
 
 @Injectable()
@@ -26,10 +26,10 @@ export default class DomainRepositoryImpl implements DomainRepository {
     return this.domainFactory.create(properties);
   }
 
-  async updateVisits(domain: Domain) {
+  async updateViews(domain: Domain) {
     const properties = this.modelToNode(domain);
-    await this.neo4jService.write(UPDATE_VISITS, properties);
-    return 'updated visits';
+    await this.neo4jService.write(UPDATE_VIEWS, properties);
+    return 'updated views';
   }
 
   private modelToNode(model: Domain): DomainNode {
@@ -41,10 +41,10 @@ export default class DomainRepositoryImpl implements DomainRepository {
 
   private nodeToModel(result: QueryResult, key = 'domain'): DomainProperties {
     const domainNode = result.records[0].get(key);
-    const visits = domainNode.visits;
+    const views = domainNode.views;
     return {
       ...domainNode,
-      visits: visits !== null ? visits : 0,
+      views: views !== null ? views : 0,
     };
   }
 }

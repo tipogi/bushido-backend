@@ -6,7 +6,7 @@ import { VisitUpdatedEvent } from './events/visit-updated.event';
 export interface DomainProperties {
   name: string;
   hash: string;
-  visits: number;
+  views: number;
 }
 
 // INFO: This is the domain layer which is the core layer in Domain-Driven design
@@ -15,14 +15,14 @@ export interface DomainProperties {
 // The domain name comes because that domain object describes a domain (https://bushido.guide) literally
 export interface Domain {
   properties(): DomainProperties;
-  updateVisits(hash: string): void;
+  updateViews(hash: string): void;
   commit: () => void;
 }
 
 export class DomainImpl extends AggregateRoot implements Domain {
   private readonly name: string;
   private readonly hash: string;
-  private visits: number;
+  private views: number;
 
   constructor(properties: DomainProperties) {
     super();
@@ -33,17 +33,17 @@ export class DomainImpl extends AggregateRoot implements Domain {
     return {
       name: this.name,
       hash: this.hash,
-      visits: this.visits,
+      views: this.views,
     };
   }
 
-  updateVisits(hash: string): void {
+  updateViews(hash: string): void {
     if (this.hash !== hash) {
       const { message, key } = DOMAIN_WRONG_HASH_ERROR;
       throw new InternalServerErrorException(message, key);
     }
     // Increment domain visit number
-    this.visits++;
+    this.views++;
     this.apply(Object.assign(new VisitUpdatedEvent(), this));
   }
 }

@@ -19,8 +19,8 @@ export class UpdateVisitdHandler implements ICommandHandler<UpdateVisitCommand, 
       const { message, key } = DOMAIN_IS_NOT_FOUND_ERROR;
       throw new NotFoundException(message, key);
     }
-    domain.updateVisits(hash);
-    await this.domainRepository.updateVisits(domain);
+    domain.updateViews(hash);
+    await this.domainRepository.updateViews(domain);
     // Dispatch the events that domain create
     domain.commit();
   }

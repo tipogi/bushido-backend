@@ -16,7 +16,7 @@ export class DomainObject {
   hash: string;
 
   @Field({ nullable: false })
-  visits: number;
+  views: number;
 
   @Field(() => [String])
   @IsArray()

@@ -15,7 +15,7 @@ type DomainObject {
   description: String
   icon: String
   hash: String!
-  visits: Float!
+  views: Float!
   tag: [String!]!
   lang: String
   url: String!
