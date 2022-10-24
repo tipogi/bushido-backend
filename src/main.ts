@@ -16,6 +16,7 @@ async function bootstrap() {
     console.log(`CORS activated on http://${EXTERNAL_IP}:${EXTERNAL_PORT}`);
     app.enableCors();
   }
+  app.enableCors();
   await app.listen(4000);
 }
 bootstrap();
