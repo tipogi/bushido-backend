@@ -4,7 +4,7 @@ export interface CustomConfigOptions {
 
 // The private and public keys will be encoded in Base64
 export interface EnvironmentConfigParams {
-  env: string
+  env: string;
   ddbb: {
     scheme: string;
     host: string;

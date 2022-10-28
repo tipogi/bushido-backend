@@ -1,1 +1,1 @@
-export * from './PingDomain.dto';
+export * from './pingDomain.dto';

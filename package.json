@@ -37,6 +37,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "helmet": "^6.0.0",
     "lodash": "^4.17.21",

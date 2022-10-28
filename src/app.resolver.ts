@@ -1,9 +1,9 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Controller, Get } from '@nestjs/common';
 
-@Resolver()
-export class AppResolver {
-  @Query()
-  helloWorld() {
-    return 'Hello World!';
+@Controller('api')
+export class AppController {
+  @Get('/healthcheck')
+  server_healthcheck() {
+    return 200;
   }
 }

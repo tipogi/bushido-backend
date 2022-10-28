@@ -6,6 +6,9 @@ import { exit } from 'process';
 import { get } from 'lodash';
 import { CustomConfigOptions, EnvironmentConfigParams } from './interfaces';
 import { CONFIG_PROVIDER_VALUE_NAME } from './constants';
+// Read the .env file that it is located in the root folder
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 
 @Injectable()
 export class EnvConfigService {
@@ -20,7 +23,7 @@ export class EnvConfigService {
       this.envConfig = yaml.load(readFileSync(envFile), 'utf8');
     } catch (e) {
       console.log(
-        'The requested environment file does not exist. Add the yml file in config/environment folder. Or it could be another mayor error. Or YML is not well formatted. Check the file',
+        'The requested environment file does not exist.\n - Add the yml file in config/environment folder\n - The root, environment file (.env) which indicates app environment might not be created\n - or it could be another mayor error or YML is not well formatted',
       );
       exit(1);
     }

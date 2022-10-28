@@ -1,6 +1,5 @@
 # NestJS
 .env
-src/config/certs
 src/config/environment/*
 src/config/external_connections.ts
 !src/config/environment/README.md
