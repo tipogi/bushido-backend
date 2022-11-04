@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphqlWrapperModule } from './utils/tools/graphql/graphql-wrapper.module';
 import { AppModules } from './modules';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
     ...AppModules,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
