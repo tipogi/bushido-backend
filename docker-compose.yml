@@ -32,5 +32,4 @@ services:
       NEO4J_apoc_export_file_enabled: "true"
 networks:
   default:
-    external:
       name: bushido-network
