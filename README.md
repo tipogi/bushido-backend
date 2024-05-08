@@ -1,5 +1,5 @@
 # Motivation
-The web server for bushido.guide. It has two main tasks: Get the repository domains and P2P market offers.
+The web server for [bushido.guide](https://bushido.guide). It has two main tasks: Get the repository domains and P2P market offers.
 
 # Overview
 
